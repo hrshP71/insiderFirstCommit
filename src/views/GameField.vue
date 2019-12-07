@@ -45,6 +45,7 @@ import store from '../store/index';
                     event.target.classList += " success";
                     this.points += 50;
                 } else {
+                    this.failed(event);
                     event.target.classList += " failed";
                     this.show();
                 }
@@ -54,6 +55,9 @@ import store from '../store/index';
             },
             hander(event){
                 this.$emit('clicked', this.points);
+            },
+            failed(event){
+                this.$emit('failed', this.points);
             }
         },
         props:{

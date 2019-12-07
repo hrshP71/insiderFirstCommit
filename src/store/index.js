@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    username: 'Dummy Name',
+    name: 'Ozgur',
+    surname:'Seyidoglu',
     previousScore: [{
         name: "test",
         score: 555
@@ -25,12 +26,14 @@ export default new Vuex.Store({
   ]
   },
   mutations: {
-    assignUsername(state , {payload} ){
-      this.username = payload.name;
-      this.username += payload.surname;
-    },
     updateName(state,value){
-      this.username += value;
+      this.state.name = value;
+    },
+    updateSurname(state,value){
+      this.state.surname = value;
+    },
+    newHighScore(state, payload){
+      this.state.previousScore.push(payload);
     }
   },
   actions: {

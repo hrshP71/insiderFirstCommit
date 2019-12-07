@@ -1,7 +1,7 @@
 <template>
   <fieldset>
       <label :for="input">{{whatFor}}</label>
-      <input type="text" name="" v-model="input">
+      <input @blur="blurred" type="text" name="" v-model="input">
   </fieldset>
 </template>
 
@@ -16,14 +16,18 @@ export default {
     props:{
         whatFor:{
             type: String,
-            default: 'username',
+            default: 'Name',
             required: false,
-            
         }
     },
-    beforeRouteEnter (to, from, next) {
-        this.$store.commit('updateName', this.input);
-        this.$store.state.username;
+    methods: {
+        blurred(){
+        let role = this.whatFor;
+        let updatePath = 'update' + role;
+        console.log(updatePath)
+        this.$store.commit( updatePath , this.input);
+        console.log(this.$store.state.name);
+        }
     }
 }
 </script>

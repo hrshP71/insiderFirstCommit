@@ -23,7 +23,7 @@
       </button>
     </div>
     <div class="d-flex">
-    <GameField @clicked="onClickChild"/>
+    <GameField @failed="updateStore" @clicked="onClickChild"/>
     <ScoreBoard />
     </div>
     </div>
@@ -58,10 +58,17 @@ export default {
     },
     onClickChild (value) {
       this.points = value;
+    },
+    updateStore(value){
+      this.$store.commit('newHighScore', {
+        name: this.name,
+        score: this.points
+      });
+      console.log(this.$store.state.previousScore);
     }
   },
    beforeMount(){
-     this.name = this.$store.state.username;
+     this.name = this.$store.state.name + ' ' + this.$store.state.surname;
    },
    
 }
