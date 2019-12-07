@@ -4,7 +4,7 @@
 
         <div v-for="e in evenPlayingField.rows" :key="e" class="parts row">
             <div class="column-wrapper">
-                <button @click="getResult" v-for="z in evenPlayingField.columns" :key="z " class="parts columns">
+                <button @click="getResult($event); hander($event);" v-for="z in evenPlayingField.columns" :key="z " class="parts columns">
                 </button>
             </div>
         </div>
@@ -52,6 +52,9 @@ import store from '../store/index';
             show(){
                 this.showModal = true;
             },
+            hander(event){
+                this.$emit('clicked', this.points);
+            }
         },
         props:{
             newData:{

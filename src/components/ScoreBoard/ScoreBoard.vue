@@ -19,7 +19,6 @@ export default {
     },
     created(){
         this.scoreList = this.$store.state.previousScore;
-        console.log(this.scoreList);
     }
 }
 </script>

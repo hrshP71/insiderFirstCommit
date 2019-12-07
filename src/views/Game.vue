@@ -11,7 +11,7 @@
        <input v-model="name">  
       </fieldset>
       <fieldset>
-       <input type="score">  
+       <input v-model="points" type="score">  
       </fieldset>
       <button @click="restart" class="restart">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -23,8 +23,8 @@
       </button>
     </div>
     <div class="d-flex">
-    <GameField @failed="showRestart"/>
-    <ScoreBoard/>
+    <GameField @clicked="onClickChild"/>
+    <ScoreBoard />
     </div>
     </div>
   </div>
@@ -37,7 +37,8 @@ import GameField from './GameField.vue'
 export default {
   data(){
     return{
-      name: ''
+      name: '',
+      points:0,
     }
   },
   components:{
@@ -54,11 +55,15 @@ export default {
     },
     showRestart(){
       console.log('happened');
+    },
+    onClickChild (value) {
+      this.points = value;
     }
   },
    beforeMount(){
      this.name = this.$store.state.username;
-   }
+   },
+   
 }
 </script>
 
@@ -78,6 +83,9 @@ export default {
     }
   }
   .d-flex{
+    width:100%;
+    justify-content: center;
+    align-items: center;
     display: flex;
   }
 </style>
