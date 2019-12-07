@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-    <img width="250" height="125" src="../assets/logo.png">
+    
     <HelloWorld msg="--- Mayın Tarlası ---"/>
+   
   </div>
 </template>
 
@@ -16,3 +17,7 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+
+</style>
