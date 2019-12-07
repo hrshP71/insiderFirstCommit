@@ -6,6 +6,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     name: 'Ozgur',
+    evenPlayingField: {
+      rows: [1, 2, 3, 4, 5],
+      columns: [1, 2, 3, 4, 5]
+    },
     surname:'Seyidoglu',
     previousScore: [{
         name: "test",

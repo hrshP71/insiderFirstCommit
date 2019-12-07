@@ -24,5 +24,8 @@ export default {
 </script>
 
 <style lang="scss">
-    
+    ul{
+        list-style: none;
+        padding: 10px;
+    }
 </style>

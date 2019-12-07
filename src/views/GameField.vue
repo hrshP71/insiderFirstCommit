@@ -29,21 +29,28 @@ import store from '../store/index';
         data() {
             return {
                 showModal : false,
-                evenPlayingField: {
-                    rows: [1, 2, 3, 4, 5],
-                    columns: [1, 2, 3, 4, 5]
-                },
                 points: 0,
+                iteration: 0,
+            }
+        },
+        computed:{
+            evenPlayingField(){
+                return this.$store.state.evenPlayingField;
             }
         },
         methods: {
             getResult(event) {
                 event.target.disabled = true;
                 let rnd = Math.random();
-                console.log(rnd)
-                if (rnd < 0.8) {
+                
+                if (rnd < .71) {
                     event.target.classList += " success";
                     this.points += 50;
+                    this.iteration++;
+
+                    if(this.iteration == this.evenPlayingField.rows.length * this.evenPlayingField.columns.length){
+                        alert('You won!');
+                    }
                 } else {
                     this.failed(event);
                     event.target.classList += " failed";
